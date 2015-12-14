@@ -4,7 +4,7 @@ var GAME_OVER = false;
 // Taille du jeu (mode portrait d'un nexus 5 sans la barre de navigation)
 const width = 1775;
 const height = 1080;
-const tailleTuile = 75;
+const tailleTuile = 50;
 const saut =800;
 const CheminJump = 'Images/saut.jpg';
 const CheminBasic = 'Images/normal.jpg';
@@ -27,6 +27,7 @@ gameState.load.prototype = {
 	preload: function() {
 		// Méthode qui sera appelée pour charger les ressources
 		// Contiendra les ressources à charger (images, sons et JSON)
+		this.game.load.atlasJSONHash('test', 'Images/test.png', 'Data/test.json');
 
 		// Bout de code qui va permettre au jeu de se redimensionner selon la taille de l'écran
 		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -35,7 +36,7 @@ gameState.load.prototype = {
 			game.scale.refresh();
 		});
 		game.scale.refresh();
-
+		//
 		game.load.image('background', 'Images/fond.jpg');
 		game.load.image('jump', CheminJump);
 		game.load.image('basic', CheminBasic);
@@ -59,10 +60,20 @@ gameState.main.prototype = {
 	create: function() {
 		// Méthode qui sera appelée pour initialiser le jeu et y intégrer les différentes ressources
 
-		// création de l'arrière-plan
+		//--- BACKGROUND
 		this.background = game.add.sprite(0, 0, 'background');
 		this.background.width = game.width;
 		this.background.height = game.height;
+
+		//--- PERSONNAGE
+		this.test = this.game.add.sprite(50, game.height-150, 'test');
+		this.test.width=this.test.width/1.7;
+		this.test.height=this.test.height/1.7;
+		this.test.y= this.test.y-this.test.height;
+
+		//--- ANIMATION
+		this.test.animations.add('walk');
+		this.test.animations.play('walk', 10, true);
 
 		this.constructGround();
 
