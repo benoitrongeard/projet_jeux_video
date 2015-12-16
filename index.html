@@ -6,14 +6,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
 		<script type="text/javascript" src="build/phaser.min.js"></script>
-		<script type="text/javascript" src="Script/main.js"/></script>
 		<script type="text/javascript" src="debug/phaser-debug.js"/></script>
+		<script type="text/javascript" src="Script/jquery.min.js"/></script>
+		<script type="text/javascript" src="Script/bootstrap.js"/></script>		
+		<script type="text/javascript" src="Script/main.js"/></script>
 
+		<link rel="stylesheet" href="Css/bootstrap.css"/>
+		<link rel="stylesheet" href="Css/bootstrap-theme.css"/>
 		<link rel="stylesheet" href="Css/design.css"/>
+
+		<script type="text/javascript">
+			(function() {
+				game = new Phaser.Game(width, height, Phaser.AUTO, 'JamTime', { preload: preload, create: create, update: update });
+			})();
+		</script>
 	</head>
 
 	<body>
-		<div id="jeux">
+		<div id="menu_jeux">
 		</div>
 	</body>
 </html>
